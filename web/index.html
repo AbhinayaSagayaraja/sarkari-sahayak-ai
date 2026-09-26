@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sarkari Sahayak</title>
+  <meta name="description" content="Voice-first, multilingual navigator for Indian government welfare schemes." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23F28C28'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif'>स</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- No build step: Tailwind via CDN, React via ES modules. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Baloo 2"', '"Noto Sans Tamil"', "sans-serif"],
+            sans: ["Mukta", '"Noto Sans Tamil"', "system-ui", "sans-serif"],
+          },
+          colors: {
+            saffron: { 50: "#FFF6EC", 100: "#FFE8CF", 200: "#FFD09E", 400: "#F9A350", 500: "#F28C28", 600: "#D9700F", 700: "#A9540B" },
+            leaf: { 50: "#ECF8EE", 100: "#D2F0D7", 500: "#1E9E3A", 600: "#138808", 700: "#0F6B07" },
+            ink: { 50: "#F1F3FB", 100: "#DDE2F5", 500: "#3A4AA8", 700: "#1E2A78", 800: "#172060", 900: "#0F1540" },
+            paper: "#FBF8F3",
+            night: { 800: "#161B26", 900: "#0E1117" },
+          },
+        },
+      },
+    };
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.3.1",
+        "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
+        "htm": "https://esm.sh/htm@3.1.1"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="bg-paper text-slate-800 dark:bg-night-900 dark:text-slate-100 font-sans antialiased">
+  <div id="root"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

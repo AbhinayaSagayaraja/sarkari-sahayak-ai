@@ -1,0 +1,62 @@
+[
+  {
+    "id": "farmer",
+    "emoji": "🌾",
+    "label": { "en": "Ramesh · Farmer, UP", "hi": "रमेश · किसान, उ.प्र.", "ta": "ரமேஷ் · விவசாயி, உ.பி." },
+    "lang": "hi",
+    "script": [
+      {
+        "text": "नमस्ते, मेरा नाम रमेश यादव है। मैं 46 साल का हूँ और उत्तर प्रदेश के बाराबंकी में रहता हूँ।",
+        "updates": { "name": "Ramesh Yadav", "age": 46, "gender": "male", "state": "Uttar Pradesh" }
+      },
+      {
+        "text": "मैं किसान हूँ, मेरे नाम पर ढाई एकड़ ज़मीन है। साल भर में करीब 1 लाख 20 हज़ार कमा लेता हूँ।",
+        "updates": { "occupation": "farmer", "owns_land": true, "land_acres": 2.5, "annual_income": 120000 }
+      },
+      {
+        "text": "घर में 5 लोग हैं, पक्का मकान है। मैं कोई सरकारी नौकरी नहीं करता, इनकम टैक्स भी नहीं भरता।",
+        "updates": { "family_size": 5, "house_type": "pucca", "govt_employee": false, "income_tax_payer": false, "existing_benefits": [] }
+      }
+    ]
+  },
+  {
+    "id": "gig",
+    "emoji": "🛵",
+    "label": { "en": "Arif · Delivery rider, Bengaluru", "hi": "आरिफ़ · डिलीवरी राइडर, बेंगलुरु", "ta": "ஆரிஃப் · டெலிவரி, பெங்களூரு" },
+    "lang": "en",
+    "script": [
+      {
+        "text": "Hi bhai, main Mohammed Arif, 28 years, Bengaluru mein Swiggy delivery karta hoon.",
+        "updates": { "name": "Mohammed Arif", "age": 28, "gender": "male", "state": "Karnataka", "occupation": "gig_worker" }
+      },
+      {
+        "text": "Monthly around 22k earning hai, so saal ka roughly 2.6 lakh. Family mein 3 log — wife, beti aur main.",
+        "updates": { "annual_income": 264000, "family_size": 3 }
+      },
+      {
+        "text": "Koi zameen nahi hai, rent pe pucca room hai. No income tax, no govt job.",
+        "updates": { "owns_land": false, "house_type": "pucca", "income_tax_payer": false, "govt_employee": false, "existing_benefits": [] }
+      }
+    ]
+  },
+  {
+    "id": "student",
+    "emoji": "🎓",
+    "label": { "en": "Kavya · Student, Madurai", "hi": "काव्या · छात्रा, मदुरै", "ta": "காவ்யா · மாணவி, மதுரை" },
+    "lang": "ta",
+    "script": [
+      {
+        "text": "வணக்கம், என் பெயர் காவ்யா முருகன். எனக்கு 19 வயது, மதுரையில் இருக்கிறேன்.",
+        "updates": { "name": "Kavya Murugan", "age": 19, "gender": "female", "state": "Tamil Nadu" }
+      },
+      {
+        "text": "நான் B.Sc இரண்டாம் ஆண்டு படிக்கிறேன். அப்பா கூலி வேலை, குடும்ப வருமானம் வருஷத்துக்கு 1.8 லட்சம்.",
+        "updates": { "occupation": "student", "enrolled_post_matric": true, "annual_income": 180000 }
+      },
+      {
+        "text": "வீட்டில் 4 பேர். நாங்கள் குடிசை வீட்டில் வசிக்கிறோம், சொந்த நிலம் இல்லை.",
+        "updates": { "family_size": 4, "house_type": "kutcha", "owns_land": false, "income_tax_payer": false, "govt_employee": false, "existing_benefits": [] }
+      }
+    ]
+  }
+]

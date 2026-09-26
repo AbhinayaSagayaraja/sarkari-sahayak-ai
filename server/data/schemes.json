@@ -1,0 +1,188 @@
+[
+  {
+    "id": "pm_kisan",
+    "name": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+    "short_name": "PM-KISAN",
+    "level": "central",
+    "state": "all",
+    "description": "Income support to landholding farmer families, paid directly into their bank account.",
+    "source_document": "PM-KISAN Operational Guidelines (paraphrased for demo)",
+    "eligibility_criteria": [
+      {
+        "id": "pmk-1",
+        "field": "occupation",
+        "operator": "eq",
+        "value": "farmer",
+        "source_clause": "Para 2.1 — All landholding farmers' families, which have cultivable land holding in their names, shall be eligible to get benefit under the scheme."
+      },
+      {
+        "id": "pmk-2",
+        "field": "owns_land",
+        "operator": "eq",
+        "value": true,
+        "source_clause": "Para 2.1 — The cultivable land must be held in the name of the farmer family as per the land records of the State/UT."
+      },
+      {
+        "id": "pmk-3",
+        "field": "income_tax_payer",
+        "operator": "eq",
+        "value": false,
+        "source_clause": "Para 3 (Exclusions), (iv) — All persons who paid Income Tax in the last assessment year are not eligible for benefit."
+      },
+      {
+        "id": "pmk-4",
+        "field": "govt_employee",
+        "operator": "eq",
+        "value": false,
+        "source_clause": "Para 3 (Exclusions), (iii) — All serving or retired officers and employees of Central/State Government (excluding Multi Tasking Staff / Class IV / Group D) are not eligible."
+      }
+    ],
+    "required_documents": [
+      "Aadhaar card",
+      "Land ownership record (Khatauni / Patta / RoR)",
+      "Aadhaar-linked bank account passbook",
+      "Mobile number"
+    ],
+    "benefit_amount_or_type": "₹6,000 per year, paid in three instalments of ₹2,000 via Direct Benefit Transfer",
+    "benefit_value_inr": 6000,
+    "benefit_kind": "cash_yearly",
+    "processing_time": "Next instalment cycle (~4 months)",
+    "apply_at": "pmkisan.gov.in or nearest Common Service Centre",
+    "conflicts_with": []
+  },
+  {
+    "id": "ayushman_bharat",
+    "name": "Ayushman Bharat — PM Jan Arogya Yojana (AB PM-JAY)",
+    "short_name": "Ayushman Bharat",
+    "level": "central",
+    "state": "all",
+    "description": "Cashless hospital treatment cover for poor and vulnerable families, and for all senior citizens aged 70+.",
+    "source_document": "AB PM-JAY eligibility guidelines (paraphrased; income limit is a demo proxy for SECC-2011 deprivation criteria)",
+    "eligibility_criteria": [
+      {
+        "id": "abpmjay-1",
+        "any_of": [
+          {
+            "id": "abpmjay-1a",
+            "field": "annual_income",
+            "operator": "lte",
+            "value": 500000,
+            "source_clause": "Beneficiary identification — Families identified as deprived under SECC-2011 criteria (represented in this demo as household annual income up to ₹5,00,000) are entitled to cover."
+          },
+          {
+            "id": "abpmjay-1b",
+            "field": "age",
+            "operator": "gte",
+            "value": 70,
+            "source_clause": "Expansion notified Oct 2024 — All senior citizens aged 70 years and above are eligible irrespective of socio-economic status."
+          }
+        ]
+      }
+    ],
+    "required_documents": [
+      "Aadhaar card",
+      "Ration card or PM-JAY letter",
+      "Mobile number",
+      "Income certificate"
+    ],
+    "benefit_amount_or_type": "Health cover up to ₹5,00,000 per family per year for hospitalisation — cashless at empanelled hospitals",
+    "benefit_value_inr": 500000,
+    "benefit_kind": "cover_yearly",
+    "processing_time": "Card issued same day at CSC / hospital Arogya Mitra desk",
+    "apply_at": "beneficiary.nha.gov.in, Ayushman app, or empanelled hospital",
+    "conflicts_with": []
+  },
+  {
+    "id": "tn_postmatric_scholarship",
+    "name": "Tamil Nadu Post-Matric Scholarship",
+    "short_name": "TN Scholarship",
+    "level": "state",
+    "state": "Tamil Nadu",
+    "description": "Fee reimbursement and maintenance allowance for students from low-income families studying Class XI and above.",
+    "source_document": "State post-matric scholarship guidelines (paraphrased; amounts simplified for demo)",
+    "eligibility_criteria": [
+      {
+        "id": "tnpms-1",
+        "field": "state",
+        "operator": "eq",
+        "value": "Tamil Nadu",
+        "source_clause": "Clause 2(a) — The student shall be a native of Tamil Nadu."
+      },
+      {
+        "id": "tnpms-2",
+        "field": "enrolled_post_matric",
+        "operator": "eq",
+        "value": true,
+        "source_clause": "Clause 2(b) — The student shall be studying in a post-matriculation course (Class XI onwards, diploma, UG or PG) in a recognised institution."
+      },
+      {
+        "id": "tnpms-3",
+        "field": "annual_income",
+        "operator": "lte",
+        "value": 250000,
+        "source_clause": "Clause 2(c) — The annual income of parents/guardians from all sources shall not exceed ₹2,50,000."
+      }
+    ],
+    "required_documents": [
+      "Aadhaar card",
+      "Income certificate (issued by Tahsildar)",
+      "Community certificate",
+      "Previous year mark sheet",
+      "Bonafide certificate from institution",
+      "Bank account passbook"
+    ],
+    "benefit_amount_or_type": "Full tuition + exam fee reimbursement and maintenance allowance (≈ ₹45,000 per year)",
+    "benefit_value_inr": 45000,
+    "benefit_kind": "cash_yearly",
+    "processing_time": "60–90 days after institution verification",
+    "apply_at": "State scholarship portal via your institution",
+    "conflicts_with": ["tn_housing_subsidy"],
+    "conflict_clause": "Demo rule — Welfare DBT Consolidation Order, Clause 4: a household may avail only one of the designated state-funded direct-benefit schemes (Post-Matric Scholarship, CM Housing Subsidy) in a financial year."
+  },
+  {
+    "id": "tn_housing_subsidy",
+    "name": "Tamil Nadu CM Pucca Housing Subsidy",
+    "short_name": "TN Housing",
+    "level": "state",
+    "state": "Tamil Nadu",
+    "description": "One-time assistance for families living in kutcha houses (or houseless) to build a pucca house.",
+    "source_document": "State rural housing scheme guidelines (paraphrased; amounts simplified for demo)",
+    "eligibility_criteria": [
+      {
+        "id": "tnhs-1",
+        "field": "state",
+        "operator": "eq",
+        "value": "Tamil Nadu",
+        "source_clause": "Section 3.1 — The beneficiary household shall be resident in Tamil Nadu."
+      },
+      {
+        "id": "tnhs-2",
+        "field": "house_type",
+        "operator": "in",
+        "value": ["kutcha", "none"],
+        "source_clause": "Section 3.2 — The household shall be living in a kutcha house (thatched / mud walls) or be houseless."
+      },
+      {
+        "id": "tnhs-3",
+        "field": "annual_income",
+        "operator": "lte",
+        "value": 300000,
+        "source_clause": "Section 3.4 — Annual household income shall not exceed ₹3,00,000."
+      }
+    ],
+    "required_documents": [
+      "Aadhaar card",
+      "Income certificate (issued by Tahsildar)",
+      "Patta / site ownership proof",
+      "Photograph of current dwelling",
+      "Bank account passbook"
+    ],
+    "benefit_amount_or_type": "One-time assistance of ₹3,50,000 released in stages as construction progresses",
+    "benefit_value_inr": 350000,
+    "benefit_kind": "cash_one_time",
+    "processing_time": "Selection by Gram Sabha; first stage release in 3–6 months",
+    "apply_at": "Block Development Office / Gram Panchayat",
+    "conflicts_with": ["tn_postmatric_scholarship"],
+    "conflict_clause": "Demo rule — Welfare DBT Consolidation Order, Clause 4: a household may avail only one of the designated state-funded direct-benefit schemes (Post-Matric Scholarship, CM Housing Subsidy) in a financial year."
+  }
+]

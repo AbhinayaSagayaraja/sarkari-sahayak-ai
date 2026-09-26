@@ -1,0 +1,92 @@
+/* Motion and effects that Tailwind's CDN build doesn't cover. */
+
+html { scroll-behavior: smooth; }
+body { min-height: 100vh; }
+
+/* Profile fields pop in one at a time. */
+@keyframes pop-in {
+  0%   { opacity: 0; transform: translateY(8px) scale(0.92); }
+  60%  { opacity: 1; transform: translateY(-2px) scale(1.03); }
+  100% { opacity: 1; transform: none; }
+}
+.pop-in { animation: pop-in 420ms cubic-bezier(.2,.9,.3,1.2) both; }
+
+@keyframes glow-fade {
+  0%   { box-shadow: 0 0 0 0 rgba(242,140,40,.55); }
+  100% { box-shadow: 0 0 0 10px rgba(242,140,40,0); }
+}
+.glow-once { animation: glow-fade 900ms ease-out 1; }
+
+/* Chat bubbles */
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 280ms ease-out both; }
+
+/* Scheme cards: enter with a flip-reveal, then flip on demand to the cited rule. */
+@keyframes flip-reveal {
+  0%   { opacity: 0; transform: perspective(900px) rotateX(-70deg) translateY(20px); }
+  100% { opacity: 1; transform: perspective(900px) rotateX(0) translateY(0); }
+}
+.flip-reveal { animation: flip-reveal 650ms cubic-bezier(.2,.8,.2,1) both; transform-origin: top center; }
+
+/* Two-phase flip (out to 90°, swap face, in from -90°) so the card height follows the visible side. */
+@keyframes flip-out { to { transform: perspective(1200px) rotateY(90deg); } }
+@keyframes flip-in  { from { transform: perspective(1200px) rotateY(-90deg); } to { transform: none; } }
+.flip-out { animation: flip-out 200ms ease-in forwards; }
+.flip-in  { animation: flip-in 320ms cubic-bezier(.2,.8,.2,1) both; }
+
+/* Conflict card pulse */
+@keyframes amber-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,.35); }
+  50%      { box-shadow: 0 0 0 8px rgba(245,158,11,0); }
+}
+.amber-pulse { animation: amber-pulse 2.2s ease-in-out 3; }
+
+@keyframes slide-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.slide-up { animation: slide-up 600ms cubic-bezier(.2,.8,.2,1) both; }
+
+/* Skeleton shimmer (no spinners anywhere). */
+.skeleton {
+  background: linear-gradient(90deg, rgba(148,163,184,.18) 25%, rgba(148,163,184,.34) 37%, rgba(148,163,184,.18) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.3s ease infinite;
+  border-radius: .5rem;
+}
+@keyframes shimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+
+/* Mic ring while recording */
+@keyframes ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.8); opacity: 0; } }
+.mic-ring::before, .mic-ring::after {
+  content: ""; position: absolute; inset: 0; border-radius: 9999px; background: rgba(242,140,40,.45);
+  animation: ring 1.4s ease-out infinite;
+}
+.mic-ring::after { animation-delay: .7s; }
+
+/* Legal-footnote style citation */
+.citation {
+  position: relative;
+  border-left: 3px solid #F28C28;
+  background: repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(148,163,184,.12) 24px);
+}
+
+/* Soft tricolour backdrop on the landing page */
+.tricolour-bg {
+  background:
+    radial-gradient(40rem 22rem at 10% -5%, rgba(242,140,40,.22), transparent 60%),
+    radial-gradient(36rem 20rem at 95% 105%, rgba(19,136,8,.16), transparent 60%),
+    radial-gradient(30rem 18rem at 70% 20%, rgba(58,74,168,.10), transparent 60%);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+}
+
+/* Printing the application draft: print only the draft sheet. */
+@media print {
+  body * { visibility: hidden !important; }
+  .print-area, .print-area * { visibility: visible !important; }
+  .print-area { position: absolute !important; inset: 0 auto auto 0 !important; width: 100% !important; box-shadow: none !important; color: #000 !important; background: #fff !important; }
+  .no-print { display: none !important; }
+}
