@@ -1,0 +1,16 @@
+# Render Blueprint: one-click deploy of Sarkari Sahayak as a single web service.
+services:
+  - type: web
+    name: sarkari-sahayak
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server/main.py
+    healthCheckPath: /api/bootstrap
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: HOST
+        value: 0.0.0.0
+      - key: SARVAM_API_KEY
+        sync: false   # entered privately in the Render dashboard, never committed

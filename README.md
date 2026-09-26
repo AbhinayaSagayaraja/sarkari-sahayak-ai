@@ -33,6 +33,12 @@ Run the tests (standard library only):
 python -m unittest discover tests
 ```
 
+## Deploy
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AbhinayaSagayaraja/sarkari-sahayak-ai)
+
+`render.yaml` sets up one free web service. During setup Render asks for `SARVAM_API_KEY`: paste your key there, or leave it empty to run in offline mode. The key stays in Render's dashboard and is never committed. Free instances sleep when idle, so open the URL a minute before a demo.
+
 ## How it works
 
 ```

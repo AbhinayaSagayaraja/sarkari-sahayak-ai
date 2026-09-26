@@ -177,6 +177,7 @@ if __name__ == "__main__":
     import uvicorn
 
     port = int(os.getenv("PORT", "8000"))
+    host = os.getenv("HOST", "127.0.0.1")  # hosting platforms set HOST=0.0.0.0
     # ASCII only: the Windows console (cp1252) can't print arrows or dashes.
     print(f"Sarkari Sahayak -> http://localhost:{port}   (Sarvam AI: {'ON' if sarvam.configured() else 'OFF - offline fallback mode'})")
-    uvicorn.run(app, host="127.0.0.1", port=port)
+    uvicorn.run(app, host=host, port=port)
